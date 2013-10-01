@@ -1,23 +1,21 @@
 public class PrintPrimes {
   int numberOfPrimes;
-  int RR;
-  int CC;
-  int WW;
+  int numberOfRows;
+  int numberOfColumns;
   int ORDMAX;
   int listOfPrimes[];
 
-  public PrintPrimes(int numberOfPrimes, int RR, int CC, int WW, int ORDMAX) {
+  public PrintPrimes(int numberOfPrimes, int numberOfRows, int numberOfColumns, int ORDMAX) {
     this.numberOfPrimes   = numberOfPrimes;
-    this.RR  = RR;
-    this.CC  = CC;
-    this.WW  = WW;
+    this.numberOfRows  = numberOfRows;
+    this.numberOfColumns  = numberOfColumns;
     this.ORDMAX = ORDMAX;
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
 
 
   public static void main(String[] args) {
-      PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 10, 30);
+      PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 30);
       printPrimes.calculatePrimes();
       printPrimes.printPrimes();
   }
@@ -57,7 +55,7 @@ public class PrintPrimes {
             if (MULT[N] == J)
               JPRIME = false;
             N = N + 1;
-          }
+          }ws
         } while (!JPRIME);
         listOfPrimes[primesFoundSoFar] = J;
       }
@@ -70,17 +68,20 @@ public class PrintPrimes {
           System.out.println("The First " + numberOfPrimes +
                                " Prime Numbers --- Page " + PAGENUMBER);
           System.out.println("");
-          for (int ROWOFFSET = PAGEOFFSET; ROWOFFSET < PAGEOFFSET + RR; ROWOFFSET++){
-            for (int C = 0; C < CC;C++)
-              if (ROWOFFSET + C * RR <= numberOfPrimes)
-                System.out.format("%10d", listOfPrimes[ROWOFFSET + C * RR]);
+          for (int ROWOFFSET = PAGEOFFSET; ROWOFFSET < PAGEOFFSET + numberOfRows; ROWOFFSET++){
+            for (int C = 0; C < numberOfColumns;C++)
+              if (ROWOFFSET + C * numberOfRows <= numberOfPrimes)
+                System.out.format("%10d", listOfPrimes[ROWOFFSET + C * numberOfRows]);
             System.out.println("");
           }
           System.out.println("\f");
           PAGENUMBER = PAGENUMBER + 1;
-          PAGEOFFSET = PAGEOFFSET + RR * CC;
+          PAGEOFFSET = PAGEOFFSET + numberOfRows * numberOfColumns;
         }
     }
 }
+
+					 
+
 
 					 
