@@ -37,31 +37,37 @@ public class PrintPrimes {
       int n;
       int multiples[] = new int[ordMax + 1];
 
-      int testnumber = 1;
+      int currentNumber = 1;
       int ord = 2;
       int square = 9;
 
-      for(int primesFoundSoFar = 1; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
-        do {
-          testnumber = testnumber + 2;
-          if (testnumber == square) {
+      for (int primesFoundSoFar = 1; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++)
+      {
+        do
+        {
+          currentNumber = currentNumber + 2;
+          if (currentNumber == square)
+          {
             ord = ord + 1;
             square = listOfPrimes[ord] * listOfPrimes[ord];
-            multiples[ord - 1] = testnumber;
+            multiples[ord - 1] = currentNumber;
           }
           n = 2;
           isPrime = true;
-          while (n < ord && isPrime) {
-            while (multiples[n] < testnumber) {
+          while (n < ord && isPrime)
+          {
+            while (multiples[n] < currentNumber)
+            {
               multiples[n] = multiples[n] + listOfPrimes[n] + listOfPrimes[n];
             }
-            if (multiples[n] == testnumber) {
+            if (multiples[n] == currentNumber)
+            {
               isPrime = false;
             }
             n = n + 1;
           }
         } while (!isPrime);
-        listOfPrimes[primesFoundSoFar] = testnumber;
+        listOfPrimes[primesFoundSoFar] = currentNumber;
       }
     }
 
@@ -69,14 +75,18 @@ public class PrintPrimes {
     public void printPrimes() {
         int pageNumber = 1;
         int pageOffset = 1;
-        while (pageOffset <= numberOfPrimes) {
+        while (pageOffset <= numberOfPrimes)
+        {
           System.out.println("The First " + numberOfPrimes +
                                " Prime numbers --- Page " + pageNumber);
           System.out.println("");
-          for (int rowOffset = pageOffset; rowOffset < pageOffset + numberOfRows; rowOffset++){
-            for (int c = 0; c < numberOfColumns;c++) {
-              if (rowOffset + c * numberOfRows <= numberOfPrimes) {
-                System.out.format("%10d", listOfPrimes[rowOffset + c * numberOfRows]);
+          for (int rowOffset = pageOffset; rowOffset < pageOffset + numberOfRows; rowOffset++)
+          {
+            for (int columnCounter = 0; columnCounter < numberOfColumns; columnCounter++)
+            {
+              if (rowOffset + columnCounter * numberOfRows <= numberOfPrimes)
+              {
+                System.out.format("%10d", listOfPrimes[rowOffset + columnCounter * numberOfRows]);
               }
             }
             System.out.println("");
@@ -87,3 +97,5 @@ public class PrintPrimes {
         }
     }
 }
+
+					 
