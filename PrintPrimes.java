@@ -3,7 +3,7 @@ public class PrintPrimes {
   int numberOfPrimes;   
   int numberOfRows;     
   int numberOfColumns;  
-  int ordMax;
+  int ordMax;	//ordMax should be renamed to be more descriptive but I am not sure what is its function
   int listOfPrimes[];   
 
   //Constructor
@@ -43,15 +43,15 @@ public class PrintPrimes {
       int n;
       int multiples[] = new int[ordMax + 1];
       int currentNumber = 1;
-      int ord = 2;
-      int square = 9;
+      int ord = 2;	//ord should be renamed to be more descriptive but I am not sure what is its function
+      int square = 9;	//square should be renamed to be more descriptive but I am not sure what is its function
 
       for (int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
         
         do { //Better to use a while loop instead of do-while but the output is incorrect if changed
           currentNumber = currentNumber + 2;
-
-          if (currentNumber == square) {
+	  //comment explaining the IF statement here
+          if (currentNumber == square) { 
             ord = ord + 1;
             square = listOfPrimes[ord] * listOfPrimes[ord];
             multiples[ord - 1] = currentNumber;
@@ -60,11 +60,11 @@ public class PrintPrimes {
           n = 2;
           isPrime = true;
           while (n < ord && isPrime) {
-
+	    //comment explaining while loop here
             while (multiples[n] < currentNumber) {
               multiples[n] = multiples[n] + listOfPrimes[n] + listOfPrimes[n];
             }
-
+	    //comment explaining IF statement here
             if (multiples[n] == currentNumber) {
               isPrime = false;
             }
