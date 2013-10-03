@@ -1,10 +1,10 @@
 public class PrintPrimes {
-  
-  int numberOfPrimes;   //total number of prime numbers to print
-  int numberOfRows;     //number of rows per page
-  int numberOfColumns;  //number of columns per page
+
+  int numberOfPrimes;   
+  int numberOfRows;     
+  int numberOfColumns;  
   int ordMax;
-  int listOfPrimes[];   //array of length numberOfPrimes that stores found primes
+  int listOfPrimes[];   
 
   //Constructor
   public PrintPrimes(int numberOfPrimes, int numberOfRows, int numberOfColumns, int ordMax) {
@@ -48,7 +48,7 @@ public class PrintPrimes {
 
       for (int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
         
-        do {
+        do { //Better to use a while loop instead of do-while but the output is incorrect if changed
           currentNumber = currentNumber + 2;
 
           if (currentNumber == square) {
@@ -87,22 +87,9 @@ public class PrintPrimes {
         while (pageOffset <= numberOfPrimes) {
 
           System.out.println("The First " + numberOfPrimes +
-                               " Prime numbers --- Page " + pageNumber);
+                              " Prime numbers --- Page " + pageNumber);
           System.out.println("");
-
-          for (int rowOffset = pageOffset; rowOffset < pageOffset + numberOfRows; rowOffset++) {
-            
-            for (int columnCounter = 0; columnCounter < numberOfColumns; columnCounter++) {
-              
-              if (rowOffset + columnCounter * numberOfRows <= numberOfPrimes) {
-                System.out.format("%10d", listOfPrimes[rowOffset + columnCounter * numberOfRows]);
-              }
-
-            }
-
-            System.out.println("");
-          }
-
+          setOutputFormat(pageOffset);
           System.out.println("\f");
 
           pageNumber = pageNumber + 1;
@@ -110,7 +97,24 @@ public class PrintPrimes {
 
         }
     }
+
+    //Helper function that sets the appropriate output format for a passed pageOffset
+    public void setOutputFormat(int pageOffset) {
+      
+      for (int rowOffset = pageOffset; rowOffset < pageOffset + numberOfRows; rowOffset++) {
+        
+        for (int columnCounter = 0; columnCounter < numberOfColumns; columnCounter++) {
+          if (rowOffset + columnCounter * numberOfRows <= numberOfPrimes) {
+            System.out.format("%10d", listOfPrimes[rowOffset + columnCounter * numberOfRows]);
+          }
+        }
+
+        System.out.println("");
+      }
+    }
 }
+
+					 
 
 					 
 	 
